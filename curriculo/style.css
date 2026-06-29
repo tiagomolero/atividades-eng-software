@@ -1,0 +1,27 @@
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variáveis de cor para tema claro */
+:root {
+  --bg: #ffffff;
+  --texto: #1a1a1a;
+  --destaque: #2563eb;
+}
+
+/* Variáveis sobrescritas no tema escuro */
+body.dark {
+  --bg: #0f172a;
+  --texto: #e2e8f0;
+  --destaque: #60a5fa;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--texto);
+  font-family: sans-serif;
+  scroll-behavior: smooth; /* scroll suave entre seções */
+}
