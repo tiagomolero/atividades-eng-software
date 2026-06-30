@@ -4,6 +4,21 @@ btn.addEventListener('click', () => {
   document.body.classList.toggle('dark');
 });
 
+// Menu hambúrguer: abre e fecha o menu em dispositivos móveis
+const navToggle = document.getElementById('navToggle');
+const nav = document.getElementById('nav');
+
+navToggle.addEventListener('click', () => {
+  nav.classList.toggle('nav-aberto');
+});
+
+// Fecha o menu ao clicar em qualquer link (melhora a experiência mobile)
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('nav-aberto');
+  });
+});
+
 // Validação e envio simulado do formulário de contato
 document.getElementById('contatoForm').addEventListener('submit', function (e) {
   e.preventDefault(); // impede o envio real da página

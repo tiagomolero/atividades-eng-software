@@ -161,3 +161,55 @@ article a {
 article a:hover {
   text-decoration: underline;
 }
+
+/* =============================================
+   RESPONSIVIDADE — Menu hambúrguer para mobile
+   Abaixo de 768px o menu vira coluna vertical
+   e o botão hambúrguer aparece no lugar da lista
+============================================= */
+
+/* Botão hambúrguer: oculto no desktop */
+#navToggle {
+  display: none;
+  background: none;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 1.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Mostra o botão hambúrguer em mobile, alinhado à direita */
+  #navToggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  /* Esconde o menu e o botão de tema por padrão no mobile */
+  #navMenu,
+  #themeToggle {
+    display: none;
+    width: 100%;
+  }
+
+  /* Quando o nav tem a classe "nav-aberto", exibe o menu verticalmente */
+  nav.nav-aberto #navMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.8rem 0;
+  }
+
+  /* Exibe o botão de tema junto quando o menu está aberto */
+  nav.nav-aberto #themeToggle {
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+}

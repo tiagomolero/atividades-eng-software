@@ -10,13 +10,17 @@
 
     <!-- Navegação fixa -->
     <header>
-    <nav>
-        <ul>
-        <li><a href="#sobre">Sobre mim</a></li>
-        <li><a href="#formacao">Formação</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
-        <li><a href="#contato">Contato</a></li>
+    <nav id="nav">
+        <!-- Botão hambúrguer: visível apenas em telas pequenas, controlado por JavaScript -->
+        <button id="navToggle" aria-label="Abrir menu">☰</button>
+
+        <ul id="navMenu">
+        <li><a class="nav-link" href="#sobre">Sobre mim</a></li>
+        <li><a class="nav-link" href="#formacao">Formação</a></li>
+        <li><a class="nav-link" href="#portfolio">Portfólio</a></li>
+        <li><a class="nav-link" href="#contato">Contato</a></li>
         </ul>
+
         <!-- Botão para alternar entre tema claro e escuro -->
         <button id="themeToggle">🌙 Tema</button>
     </nav>
