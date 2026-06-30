@@ -25,3 +25,139 @@ body {
   font-family: sans-serif;
   scroll-behavior: smooth; /* scroll suave entre seções */
 }
+/* Navegação fixa no topo */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--destaque);
+  z-index: 100;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul a:hover {
+  text-decoration: underline;
+}
+
+/* Botão de tema */
+#themeToggle {
+  background: none;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+/* Espaço geral das seções — padding-top compensa o header fixo */
+section {
+  min-height: 100vh;
+  padding: 6rem 2rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: var(--destaque);
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--destaque);
+  padding-bottom: 0.5rem;
+}
+
+section h3 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+section p, section li {
+  line-height: 1.7;
+}
+
+section ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+/* Formulário de contato */
+#contatoForm div {
+  margin-bottom: 1.2rem;
+}
+
+#contatoForm label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+#contatoForm input,
+#contatoForm textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--bg);
+  color: var(--texto);
+}
+
+#contatoForm input:focus,
+#contatoForm textarea:focus {
+  outline: none;
+  border-color: var(--destaque);
+}
+
+#contatoForm button[type="submit"] {
+  background-color: var(--destaque);
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#contatoForm button[type="submit"]:hover {
+  opacity: 0.85;
+}
+
+/* Cards de projetos */
+article {
+  border: 2px solid var(--destaque);
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+article h3 {
+  margin-top: 0;
+  color: var(--destaque);
+}
+
+article a {
+  color: var(--destaque);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+article a:hover {
+  text-decoration: underline;
+}
