@@ -1,0 +1,87 @@
+<w:p w14:paraId="752C93AA" w14:textId="68565EF9" w:rsidR="00FB0992" w:rsidRPr="005B49D4" w:rsidRDefault="005B49D4" w:rsidP="00846018"><w:pPr><w:pStyle w:val="11-TIPODETRABALHO"/><w:rPr><w:sz w:val="56"/><w:szCs w:val="20"/></w:rPr></w:pPr><w:r w:rsidRPr="005B49D4"><w:rPr><w:sz w:val="56"/><w:szCs w:val="20"/></w:rPr><w:t>CADERNO DE RESPOSTAS DA ATIVIDADE PRÁTICA DE:
+NoSQL
+ALUNO: TIAGO MOLERO DA SILVA / RU: 5454601
+CADERNO DE RESPOSTAS DA ATIVIDADE PRÁTICA DE:
+NoSQL
+ALUNO: TIAGO MOLERO DA SILVA / RU: 5454601
+ANO
+2026
+ANO
+2026
+<w:p w14:paraId="6DF55E9E" w14:textId="6EB4B105" w:rsidR="00FB0992" w:rsidRPr="00096AAF" w:rsidRDefault="005B49D4" w:rsidP="00D010AE"><w:pPr><w:pStyle w:val="13-AUTORIADOMATERIAL"/><w:spacing w:line="240" w:lineRule="auto"/><w:rPr><w:color w:val="FFFFFF" w:themeColor="background1"/></w:rPr></w:pPr><w:r><w:rPr><w:color w:val="FFFFFF" w:themeColor="background1"/></w:rPr><w:t>Caderno de Resposta Elaborado por:
+Prof. MSc. Guilherme Ditzel Patriota
+Caderno de Resposta Elaborado por:
+Prof. MSc. Guilherme Ditzel Patriota
+Atividade Prática – NEO4J
+Questão 01 – IMPORTAÇÃO DOS ARQUIVOS JSON E CRIAÇÃO DE NÓS E ARESTAS COM BASE NOS DADOS DOS ARQUIVOS (Usar quantas páginas forem necessárias)
+O QUE FAZER: Após configurar seu banco de dados em branco (novo DBMS em versão 4.*) e colocar no mínimo 3 e máximo 10 arquivos sequenciais do trabalho (dentre os 500 arquivos JSON disponibilizados) na pasta Import, crie um comando na linguagem do banco de dados Neo4j (Cypher), usando a biblioteca de importação de dados APOC, que leia os arquivos JSON desta pasta e crie os nós e relacionamentos com base nos dados neles. Faça a separação dos nós de mensagem em Tweet (mensagens originais), Retweet (mensagens repostadas), Quoted (mensagens que citam outras mensagens), Replied_to (mensagens de resposta à outras mensagens) com uso do campo data[x].ref_tweet.type (CUIDADO! Este campo só aparece no JSON de mensagens não originais e o uso de UNWIND para acessá-la pode impedir a criação dos nós de mensagens originais). Apenas com esta separação será possível resolver a questão 02 do trabalho.
+Observação Importante: Seu banco de dados precisará conter todas as informações para resolver as questões 02 e 03. Leia elas antes, para entender o que você deseja fazer em cada uma e quais os nós, relacionamentos e atributos você irá importar dos arquivos JSON para conseguir resolver todo o trabalho sem a necessidade de recriar todo o seu banco de dados apenas para uma questão.
+Apresentação dos comandos (apenas query Cypher) usados (não esquecer do identificador pessoal/seu RU como parte do seu código, como um nome de atributo dos nós ou dado de um atributo de nós). Nenhum dos comandos apresentados aqui pode conter a palavra RETURN (Peso na nota: 12.5%):
+
+[IMG] 
+[IMG] 
+[IMG] 
+
+
+Figura 1: Comandos Cypher utilizados para importar os tweets dos arquivos JSON e criar os nós Tweet, User e Hashtag (1, 2 e 3), reclassificar os tweets em Retweet (4), Resposta (5) e Citação (6), e criar o nó de identificação pessoal RU-5454601 (7).
+
+Apresentação dos prints do resultado (não esquecer do identificador, seu RU). Estes prints devem ser de cada tela do Neo4j Browser após a execução bem-sucedida de cada comando (não mostrar nenhum grafo nesta parte, apenas as telas de execução dos comandos da parte I. O uso de RETURN zerará a nota desta parte) (Peso na nota: 12.5%):
+
+
+[IMG] 
+
+
+Figura 2: Resultados da execução bem-sucedida de cada comando da Figura 1, confirmando a criação dos nós e relacionamentos do grafo.
+
+
+
+
+Atividade Prática – NEO4J
+Questão 02 – DESCOBERTA DA HASHTAG PRINCIPAL (Usar quantas páginas forem necessárias)
+ENUNCIADO: Você deve criar e executar um comando Cypher em seu banco de dados para descobrir qual hashtag está presente em todas as mensagens originais (excluindo mensagens de retweet, citação e resposta). Este comando não deve fazer uso da biblioteca APOC. Caso seu comando tente retornar mais de 300 nós, a configuração padrão do Neo4j Browser impedirá a exibição de mais de 300 nós. Seu comando não pode ser MATCH (n) RETURN n;.
+Apresentação do comando (apenas query Cypher) usado (não esquecer do identificador pessoal no comando, seu RU). Este comando deve conter ao menos uma dupla MATCH/RETURN (sugerimos uso de subquery para resolução completa) (Peso na nota: 12.5%):
+
+
+[IMG] 
+
+Figura 3: Comando Cypher para descobrir a hashtag presente em todos os tweets originais: uma subquery (CALL) coleta as hashtags de um tweet de referência como candidatas; em seguida, para cada candidata, comparamos o total de tweets originais com o total de tweets que possuem aquela hashtag — se forem iguais, a hashtag está presente em todos. RU-5454601 identifica as variáveis do comando
+
+Apresentação do grafo gerado contendo apenas 1 nó de hashtag ao centro (a sua resposta) e ao menos mais 10 nós de mensagens relacionadas a este nó de hashtag. O print deve conter o grafo sem zoom e a legenda de tipos de nós e cores geradas pelo neo4j, incluindo a informação da quantidade de nós de Hashtag mostrados (não esquecer do identificador pessoal, seu RU) (Peso na nota: 12.5%):
+
+
+[IMG] 
+
+
+Figura 4: Grafo com a hashtag principal 'issoaglobonaomostra' ao centro, conectada a 12 tweets originais que a utilizam, e o nó de identificação RU-5454601. Painel Overview confirma 1 nó do tipo Hashtag e 12 do tipo Tweet.
+Responda à pergunta: Qual foi a hashtag usada como filtro para coleta dos dados analisados? (Esta hashtag só estará presente em nós do tipo Tweet e não em Retweet. Sua resposta deve conter apenas 1 palavra com o texto da hashtag) (Peso na nota: 12.5%)?
+Resposta (apenas 1 palavra): issoaglobonaomostra
+
+
+
+
+
+Atividade Prática – NEO4J
+Questão 03 – ANÁLISE DOS DADOS SEGUNDO VIÉS A SUA ESCOLHA (Usar quantas páginas forem necessárias)
+ENUNCIADO: Usando o mesmo banco de dados já criado na questão 01 e usado na questão 02, busque alguma informação que você julgue relevante nos dados (seu comando não pode ser MATCH (n) RETURN n; nem pode conter a biblioteca APOC). Sua tarefa aqui é analisar os dados do banco e definir qual informação você gostaria de obter e que tenha potencial de gerar um grafo com 10 ou mais nós interligados entre si. Sua análise deve responder à uma pergunta clara, como por exemplo:
+- Qual o dispositivo mais usado para tuitar? (depende de seu banco de dados já possuir os nós de equipamentos usados, criados na questão 01).
+- Qual a Hashtag que menos foi usada?
+- Qual o usuário mais movimentou a rede? (depende de você ter criado nós de usuário na questão 01)
+- Quais os usuários mais citados? (depende dos seus nós de mensagem possuírem esta informação ou de relacionamentos terem sido criados para este fim).
+
+Apresentação dos comandos (apenas queries Cypher) usados por você para realizar sua análise (não esquecer do identificador pessoal, seu RU) (Peso na nota: 12.5%):
+
+
+[IMG] 
+
+Figura 5: Comando Cypher que busca as hashtags secundárias usadas junto com a hashtag principal 'issoaglobonaomostra' nos tweets originais, com o identificador RU-5454601 nas variáveis
+Apresentação do print do resultado, podendo ser uma tabela ou um grafo. O print deve conter o resultado e o comando executado. (não esquecer do identificador, seu RU) (Peso na nota: 12.5%):
+
+
+[IMG] 
+
+Figura 6: Grafo conectado mostrando a hashtag principal, os tweets que a usam e as hashtags secundárias associadas a eles, incluindo o nó RU-5454601
+
+Explique qual foi a análise realizada, incluindo sua linha de raciocínio para criação da query Cypher e qual era sua expectativa de resultado antes da análise, comparando-a com o resultado realmente obtido após execução do comando (Peso na nota: 12.5%).
+Resposta: Escolhi investigar quais hashtags secundárias são mais usadas em conjunto com a hashtag principal (issoaglobonaomostra), para entender o contexto temático ao redor do assunto que originou a coleta dos tweets. Minha expectativa era encontrar um pequeno grupo de hashtags recorrentes, repetidas em vários tweets diferentes, formando um tema secundário comum. O resultado obtido foi um grafo único e conectado com 54 nós, no qual a hashtag principal está ligada a 15 tweets, que juntos compartilham 37 hashtags secundárias distintas, totalizando 57 relações POSSUI. O resultado não confirmou minha expectativa inicial: ao invés de um pequeno grupo de hashtags recorrentes, encontrei uma grande variedade de hashtags secundárias usadas quase sempre uma única vez cada (37 hashtags distintas para apenas 42 ocorrências entre os 15 tweets) — ou seja, cada tweet tende a usar seu próprio conjunto de hashtags extras, pouco compartilhado com os demais, em vez de reforçar um tema secundário único e comum a todos.
+
+
